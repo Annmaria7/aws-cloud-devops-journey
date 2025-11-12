@@ -1,22 +1,22 @@
-# Day 2 - AWS Service Models & Deployment Models
+# AWS Service Models & Deployment Models
 
 ## IaaS (Infrastructure as a Service)
-- Provides only the underlying infrastructure: servers, storage, network.
-- You manage software, middleware, apps; cloud handles the hardware.
-- Example: Hosting a website using EC2 instances without owning physical servers.
+- Provides the basic infrastructure: servers, storage, and networking.
+- You manage software, applications, and middleware; the cloud handles the hardware.
+- **Example:** Hosting a website on AWS EC2 without owning physical servers.
 
 ## PaaS (Platform as a Service)
-- Cloud provides infrastructure + middleware/platform.
-- You provide your application; cloud handles OS, networking, runtime.
-- Example: Deploying a web app on AWS Elastic Beanstalk.
+- Cloud provides the infrastructure and the platform/middleware.
+- You provide your application; cloud handles the OS, runtime, and networking.
+- **Example:** Deploying a web app on AWS Elastic Beanstalk.
 
 ## SaaS (Software as a Service)
-- Cloud provider manages everything: infrastructure, platform, and software.
-- You only use the application.
-- Example: Gmail, Slack, Salesforce.
+- Cloud provider manages everything: infrastructure, platform, and application.
+- You only use the software; no need to manage anything else.
+- **Example:** Gmail, Slack, Salesforce.
 
 ## Deployment Models
-1. **Public Cloud**: Cloud provider owns everything; multiple customers share resources.
-2. **Private Cloud**: Exclusive infrastructure for one organization; high security.
-3. **Hybrid Cloud**: Combination of public and private cloud.
-4. **Community Cloud**: Shared infrastructure for specific communities with common concerns.
+1. **Public Cloud:** Shared resources owned by the provider, used by multiple clients.  
+2. **Private Cloud:** Dedicated infrastructure for one organization; high security.  
+3. **Hybrid Cloud:** Combination of public and private clouds.  
+4. **Community Cloud:** Shared infrastructure for organizations with common requirements.
