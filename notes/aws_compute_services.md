@@ -34,6 +34,93 @@ When traffic spikes, add more instances using **Auto Scaling Groups**.
 - Integrated with Load Balancers and CloudWatch  
 - Pay-as-you-go model  
 
+# AWS EC2 — Simple & Beginner Friendly Notes
+
+## 🌟 What is EC2?
+EC2 is basically a **virtual computer** in AWS.
+You can:
+- Install software
+- Run websites or apps
+- Connect to it like your own computer
+
+Think of it as **a computer you rent from AWS**.
+
+---
+
+# 1️⃣ EC2 Instances
+
+An “instance” = your virtual computer.
+
+### Instance Types (Hardware Options)
+- **t2.micro / t3.micro** → small, free-tier  
+- **m5.large** → balanced  
+- **c5.large** → fast CPU  
+- **r5.large** → more RAM  
+
+You choose based on what you want to run.
+
+---
+
+# 2️⃣ What is an AMI?
+AMI = **Amazon Machine Image**  
+Think of an AMI like a **template** for your server.
+
+It contains:
+- Operating system (Ubuntu, Amazon Linux, Windows)
+- Pre-installed software (sometimes)
+- Settings
+
+Example:
+- If you choose **Ubuntu AMI**, your EC2 runs Ubuntu.
+
+---
+
+# 3️⃣ Security Groups (VERY Important)
+Security Groups = **firewalls** for your EC2.
+
+They decide:
+- Who can enter the server
+- Through which port
+- From which IP
+
+### Common inbound rules:
+| Type | Port | Source | Why |
+|------|------|--------|-----|
+| SSH | 22 | Your IP | To connect to the server |
+| HTTP | 80 | Anywhere | For websites |
+| HTTPS | 443 | Anywhere | Secure websites |
+
+💡 Security Groups are **stateful** →  
+If you allow someone IN, AWS automatically lets the response OUT.
+
+---
+
+# 4️⃣ Key Pair (.pem file)
+When you launch EC2, AWS gives you a **.pem key**.
+
+This key = **your password** to enter the EC2 through SSH.
+
+- Without the key, you **cannot** access the instance.
+- Keep it safe.
+- Never upload it to GitHub.
+
+---
+
+# 5️⃣ Public vs Private IP
+
+### Public IP
+- Visible on the internet
+- Used to connect from your laptop
+- Changes when you stop/start instance (unless using Elastic IP)
+
+### Private IP
+- Used inside AWS network
+- Not accessible from the internet
+- Stays the same even if you restart the instance
+
+---
+
+
 </details>
 
 ---
