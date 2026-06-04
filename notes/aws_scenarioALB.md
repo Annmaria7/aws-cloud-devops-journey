@@ -276,3 +276,162 @@ Key Principle:
 "Application Up" ≠ "Every Feature Working"
 
 Modern cloud architectures must monitor both infrastructure health and business functionality.
+
+# NLB + ALB Combination Architecture
+
+## Problem
+
+### ALB (Application Load Balancer)
+
+Advantages:
+
+* Layer 7 Load Balancer
+* Path-based routing
+* Host-based routing
+* Smart routing for microservices
+
+Example:
+
+/users/* → Users Service
+
+/orders/* → Orders Service
+
+/payments/* → Payments Service
+
+Disadvantage:
+
+* No Static Public IP Addresses
+* IPs behind ALB can change
+
+---
+
+### NLB (Network Load Balancer)
+
+Advantages:
+
+* Layer 4 Load Balancer
+* Static IP Addresses
+* High Performance
+* Low Latency
+
+Disadvantage:
+
+* No Path-based Routing
+* No Host-based Routing
+* No Smart Routing
+
+---
+
+## Solution
+
+Use:
+
+Client
+↓
+NLB (Static IPs)
+↓
+ALB (Smart Routing)
+↓
+Target Groups / Microservices
+
+---
+
+## Benefits of the Combination
+
+### Benefit 1: Static IPs
+
+Provided by NLB.
+
+Useful when:
+
+* Partner systems require IP whitelisting
+* Banks require fixed source IPs
+* Corporate firewalls allow only specific IPs
+
+---
+
+### Benefit 2: Smart Routing
+
+Provided by ALB.
+
+Examples:
+
+/users/* → Users Target Group
+
+/orders/* → Orders Target Group
+
+/payments/* → Payments Target Group
+
+Allows Microservices Architecture.
+
+---
+
+### Benefit 3: Independent Scaling
+
+Each microservice can scale separately.
+
+Example:
+
+Heavy payment traffic:
+
+Scale only Payment Service
+
+instead of scaling the entire application.
+
+---
+
+### Benefit 4: High Availability
+
+ALB performs health checks.
+
+If a target becomes unhealthy:
+
+Traffic is automatically routed to healthy targets.
+
+Can be combined with:
+
+* Auto Scaling Groups
+* Multi-AZ Deployment
+
+for fault tolerance.
+
+---
+
+## Typical Use Case
+
+A third-party company says:
+
+"Only traffic from IPs 52.10.10.10 and 52.10.10.11 is allowed."
+
+Solution:
+
+NLB provides fixed IPs.
+
+ALB behind NLB provides:
+
+* Path-based routing
+* Host-based routing
+* Microservice support
+
+Result:
+
+Static IPs + Smart Routing
+
+Best of both worlds.
+
+---
+
+## Exam Shortcut
+
+Need Static IPs?
+
+→ NLB
+
+Need Smart Routing?
+
+→ ALB
+
+Need BOTH?
+
+→ NLB → ALB
+
